@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLink - Blood Bank Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <div class="logo">
+                        <div class="logo-icon"><img src="logo.png" alt="logo" style="width: 30px; margin-left: 15px; margin-bottom: 10px;"></div>
+                        <div class="logo-text">
+                            <span class="logo-title">LifeLink</span>
+                            <span class="logo-subtitle">Blood Bank Dashboard</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right side icons -->
+                <div class="nav-right">
+                    <!-- Notifications -->
+                    <div class="notification-dropdown">
+                        <button class="nav-icon-btn" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">5</span>
+                        </button>
+                        <div class="dropdown-content notification-dropdown-content">
+                            <div class="dropdown-header">
+                                <h4>Notifications</h4>
+                                <button class="mark-read">Mark all read</button>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>Critical Alert</strong> - O- blood is running low</p>
+                                        <span class="notification-time">10 min ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-hospital"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>New SOS Request</strong> - City General Hospital</p>
+                                        <span class="notification-time">30 min ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-truck"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>Collection Complete</strong> - Blood pickup #BPC-245</p>
+                                        <span class="notification-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="profile-dropdown">
+                        <button class="profile-btn" id="profileBtn">
+                            <div class="avatar">BB</div>
+                            <div class="profile-info">
+                                <span class="profile-name">Central Blood Bank</span>
+                                <span class="profile-role">Admin</span>
+                            </div>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content profile-dropdown-content">
+                            <a href="#" class="dropdown-item" data-page="settings">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-chart-line"></i> Analytics
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-question-circle"></i> Help
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item logout" id="logoutBtn"  href="#" class="dropdown-item logout" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Dashboard Navigation Tabs -->
+        <div class="dashboard-tabs">
+            <div class="container">
+                <nav class="tabs-nav">
+                    <button class="tab-btn active" data-page="dashboard">
+                        <i class="fas fa-home"></i> Dashboard
+                    </button>
+                    <button class="tab-btn" data-page="inventory">
+                        <i class="fas fa-prescription-bottle"></i> Inventory
+                        <span class="badge critical" id="inventoryBadge">2</span>
+                    </button>
+                    <button class="tab-btn" data-page="sos">
+                        <i class="fas fa-bell"></i> SOS Requests
+                        <span class="badge" id="sosBadge">3</span>
+                    </button>
+                    <button class="tab-btn" data-page="documents">
+                        <i class="fas fa-file-upload"></i> Documents
+                    </button>
+                    <button class="tab-btn" data-page="settings">
+                        <i class="fas fa-user-cog"></i> Settings
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Dashboard Page (Default) -->
+            <div class="page active" id="dashboard-page">
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <div class="welcome-content">
+                        <h1>Welcome, Central Blood Bank!</h1>
+                        <p>Monitor your blood inventory, respond to emergency requests, and save lives.</p>
+                    </div>
+                    <div class="welcome-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">148</div>
+                                <div class="stat-label">Total Units</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">12</div>
+                                <div class="stat-label">Active SOS</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">5</div>
+                                <div class="stat-label">Today's Pickups</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">Response Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Critical Alerts -->
+                <div class="card critical-alerts-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Critical Blood Levels</h3>
+                        <a href="#" class="view-all" data-page="inventory">Manage Inventory</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="alerts-list" id="criticalAlertsList">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        <div class="no-alerts" id="noCriticalAlerts">
+                            <div class="no-alerts-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <p>All blood levels are adequate. Great job!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Recent SOS -->
+                <div class="dashboard-grid">
+                    <!-- Quick Actions -->
+                    <div class="card quick-actions-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-actions-grid">
+                                <button class="quick-action-btn" data-action="add-blood">
+                                    <div class="action-icon">
+                                        <i class="fas fa-plus-circle"></i>
+                                    </div>
+                                    <span>Add Blood Units</span>
+                                </button>
+                                <button class="quick-action-btn" data-action="emergency-request">
+                                    <div class="action-icon">
+                                        <i class="fas fa-sos"></i>
+                                    </div>
+                                    <span>Emergency SOS</span>
+                                </button>
+                                <button class="quick-action-btn" data-action="schedule-pickup">
+                                    <div class="action-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <span>Schedule Pickup</span>
+                                </button>
+                                <button class="quick-action-btn" data-action="generate-report">
+                                    <div class="action-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <span>Generate Report</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent SOS Requests -->
+                    <div class="card recent-sos-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Recent SOS Requests</h3>
+                            <a href="#" class="view-all" data-page="sos">View All</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="sos-requests-list">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blood Status Overview -->
+                <div class="card blood-status-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Blood Inventory Overview</h3>
+                        <div class="status-legend">
+                            <div class="legend-item">
+                                <span class="legend-dot adequate"></span>
+                                <span>Adequate</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot low"></span>
+                                <span>Low</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot critical"></span>
+                                <span>Critical</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="blood-status-grid" id="bloodStatusGrid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory Management Page -->
+            <div class="page" id="inventory-page">
+                <div class="page-header">
+                    <h2><i class="fas fa-prescription-bottle"></i> Blood Inventory Management</h2>
+                    <p>Monitor and manage blood stock levels for all blood groups</p>
+                </div>
+                
+                <!-- Inventory Actions -->
+                <div class="inventory-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="inventorySearch" placeholder="Search blood group...">
+                    </div>
+                    <button class="btn btn-primary" id="bulkUpdateBtn">
+                        <i class="fas fa-sync-alt"></i> Bulk Update
+                    </button>
+                    <button class="btn btn-outline" id="exportInventoryBtn">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+                
+                <!-- Blood Group Cards Grid -->
+                <div class="blood-cards-grid" id="bloodCardsGrid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                
+                <!-- Inventory Table -->
+                <div class="card inventory-table-card">
+                    <div class="card-header">
+                        <h3>Detailed Inventory Table</h3>
+                        <div class="table-filters">
+                            <select id="statusFilter" class="filter-select">
+                                <option value="all">All Status</option>
+                                <option value="adequate">Adequate</option>
+                                <option value="low">Low</option>
+                                <option value="critical">Critical</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="inventory-table">
+                                <thead>
+                                    <tr>
+                                        <th>Blood Group</th>
+                                        <th>Units Available</th>
+                                        <th>Minimum Required</th>
+                                        <th>Status</th>
+                                        <th>Last Updated</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventoryTableBody">
+                                    <!-- Will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SOS Requests Page -->
+            <div class="page" id="sos-page">
+                <div class="page-header">
+                    <h2><i class="fas fa-bell"></i> Incoming Emergency SOS Requests</h2>
+                    <p>Respond to emergency blood requests from hospitals</p>
+                </div>
+                
+                <!-- SOS Filters -->
+                <div class="sos-filters">
+                    <div class="filter-group">
+                        <label for="sosUrgencyFilter">Urgency:</label>
+                        <select id="sosUrgencyFilter" class="filter-select">
+                            <option value="all">All</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sosStatusFilter">Status:</label>
+                        <select id="sosStatusFilter" class="filter-select">
+                            <option value="all">All</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <button class="btn btn-outline" id="refreshSOSBtn">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- SOS Requests Table -->
+                <div class="card sos-table-card">
+                    <div class="card-header">
+                        <h3>Emergency Requests</h3>
+                        <div class="header-actions">
+                            <button class="btn btn-outline btn-sm" id="markAllReadBtn">
+                                <i class="fas fa-check-double"></i> Mark All Read
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="sos-table">
+                                <thead>
+                                    <tr>
+                                        <th>Request ID</th>
+                                        <th>Hospital</th>
+                                        <th>Blood Group</th>
+                                        <th>Units</th>
+                                        <th>Urgency</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sosTableBody">
+                                    <!-- Will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Empty State -->
+                        <div class="empty-state" id="noSOSRequests">
+                            <div class="empty-state-icon">
+                                <i class="fas fa-bell-slash"></i>
+                            </div>
+                            <h3>No SOS Requests</h3>
+                            <p>When hospitals send emergency blood requests, they will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dispatch Status Section -->
+                <div class="card dispatch-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-truck-loading"></i> Blood Dispatch Status</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="dispatch-list" id="dispatchList">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        <div class="no-dispatch" id="noDispatch">
+                            <div class="no-dispatch-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <p>No active dispatches. Confirm SOS requests to begin preparation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents Page -->
+            <div class="page" id="documents-page">
+                <div class="page-header">
+                    <h2><i class="fas fa-file-upload"></i> Document Management</h2>
+                    <p>Upload and manage your blood bank documents and certifications</p>
+                </div>
+                
+                <!-- Upload Section -->
+                <div class="card upload-card">
+                    <div class="card-header">
+                        <h3>Upload Documents</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Drag & Drop Area -->
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h4>Drag & Drop Files Here</h4>
+                            <p>or click to browse</p>
+                            <input type="file" id="fileInput" multiple style="display: none;">
+                            <button class="btn btn-outline" id="browseFilesBtn">
+                                <i class="fas fa-folder-open"></i> Browse Files
+                            </button>
+                            <p class="upload-hint">Max file size: 10MB • Supported: PDF, JPG, PNG, DOC</p>
+                        </div>
+                        
+                        <!-- File List -->
+                        <div class="uploaded-files">
+                            <h4>Required Documents</h4>
+                            <div class="file-list">
+                                <div class="file-item">
+                                    <div class="file-icon">
+                                        <i class="fas fa-file-certificate"></i>
+                                    </div>
+                                    <div class="file-info">
+                                        <div class="file-name">Blood_Bank_License.pdf</div>
+                                        <div class="file-status">
+                                            <span class="status-badge verified">Verified</span>
+                                            <span class="file-size">2.4 MB</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="file-action-btn" title="Download">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                        <button class="file-action-btn" title="Replace">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="file-item">
+                                    <div class="file-icon">
+                                        <i class="fas fa-id-card"></i>
+                                    </div>
+                                    <div class="file-info">
+                                        <div class="file-name">Director_ID_Proof.jpg</div>
+                                        <div class="file-status">
+                                            <span class="status-badge verified">Verified</span>
+                                            <span class="file-size">1.8 MB</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="file-action-btn" title="Download">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                        <button class="file-action-btn" title="Replace">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="file-item">
+                                    <div class="file-icon">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <div class="file-info">
+                                        <div class="file-name">Quality_Certificate.pdf</div>
+                                        <div class="file-status">
+                                            <span class="status-badge pending">Pending Review</span>
+                                            <span class="file-size">3.1 MB</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="file-action-btn" title="Download">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                        <button class="file-action-btn" title="Replace">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Document Status -->
+                <div class="document-status-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4><i class="fas fa-clipboard-check"></i> Verification Status</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="verification-stats">
+                                <div class="verification-stat">
+                                    <div class="stat-number">2</div>
+                                    <div class="stat-label">Verified</div>
+                                </div>
+                                <div class="verification-stat">
+                                    <div class="stat-number">1</div>
+                                    <div class="stat-label">Pending</div>
+                                </div>
+                                <div class="verification-stat">
+                                    <div class="stat-number">0</div>
+                                    <div class="stat-label">Expired</div>
+                                </div>
+                            </div>
+                            <div class="verification-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 66%"></div>
+                                </div>
+                                <div class="progress-text">66% Complete</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h4><i class="fas fa-calendar-exclamation"></i> Renewal Reminders</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="reminder-list">
+                                <div class="reminder-item">
+                                    <div class="reminder-icon">
+                                        <i class="fas fa-file-contract"></i>
+                                    </div>
+                                    <div class="reminder-content">
+                                        <p>License Renewal</p>
+                                        <span class="reminder-date">Due in 45 days</span>
+                                    </div>
+                                </div>
+                                <div class="reminder-item">
+                                    <div class="reminder-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="reminder-content">
+                                        <p>Insurance Certificate</p>
+                                        <span class="reminder-date">Due in 90 days</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline btn-block">
+                                <i class="fas fa-bell"></i> Set Reminder
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page" id="settings-page">
+                <div class="page-header">
+                    <h2><i class="fas fa-user-cog"></i> Blood Bank Profile Settings</h2>
+                    <p>Manage your blood bank information and preferences</p>
+                </div>
+                
+                <div class="settings-container">
+                    <!-- Profile Form -->
+                    <div class="card profile-form-card">
+                        <div class="card-header">
+                            <h3>Blood Bank Information</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="profileForm">
+                                <div class="form-section">
+                                    <h4><i class="fas fa-building"></i> Basic Details</h4>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="bankName">Blood Bank Name *</label>
+                                            <input type="text" id="bankName" value="Central Blood Bank" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="registrationId">Registration ID *</label>
+                                            <input type="text" id="registrationId" value="BB-2023-04567" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="email">Email Address *</label>
+                                            <input type="email" id="email" value="contact@centralbloodbank.org" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number *</label>
+                                            <input type="tel" id="phone" value="+1 (555) 123-4567" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="emergencyHelpline">Emergency Helpline *</label>
+                                        <input type="tel" id="emergencyHelpline" value="+1 (555) 911-HELP" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-section">
+                                    <h4><i class="fas fa-map-marker-alt"></i> Address Details</h4>
+                                    <div class="form-group">
+                                        <label for="address">Full Address *</label>
+                                        <textarea id="address" rows="3" required>123 Medical Center Drive, Health District, New York, NY 10001, United States</textarea>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="city">City</label>
+                                            <input type="text" id="city" value="New York">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="state">State</label>
+                                            <input type="text" id="state" value="New York">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="zipCode">Zip Code</label>
+                                            <input type="text" id="zipCode" value="10001">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-section">
+                                    <h4><i class="fas fa-cogs"></i> Operation Settings</h4>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="operatingHours">Operating Hours</label>
+                                            <input type="text" id="operatingHours" value="24/7">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="storageCapacity">Storage Capacity (Units)</label>
+                                            <input type="number" id="storageCapacity" value="500">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="specialization">Specialization</label>
+                                        <select id="specialization">
+                                            <option value="general">General Blood Bank</option>
+                                            <option value="specialized">Specialized Components</option>
+                                            <option value="research">Research & Storage</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> Save Changes
+                                    </button>
+                                    <button type="button" class="btn btn-outline" id="resetFormBtn">
+                                        <i class="fas fa-undo"></i> Reset
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Sidebar -->
+                    <div class="settings-sidebar">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Profile Status</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="profile-summary">
+                                    <div class="profile-avatar">
+                                        <div class="avatar-large">CB</div>
+                                        <div class="avatar-info">
+                                            <h4>Central Blood Bank</h4>
+                                            <p class="text-muted">ID: BB-2023-04567</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="profile-stats">
+                                        <div class="profile-stat">
+                                            <div class="stat-label">Member Since</div>
+                                            <div class="stat-value">Jan 15, 2020</div>
+                                        </div>
+                                        <div class="profile-stat">
+                                            <div class="stat-label">Total SOS Responded</div>
+                                            <div class="stat-value">245</div>
+                                        </div>
+                                        <div class="profile-stat">
+                                            <div class="stat-label">Response Time</div>
+                                            <div class="stat-value">18 min</div>
+                                        </div>
+                                        <div class="profile-stat">
+                                            <div class="stat-label">Verification Status</div>
+                                            <div class="stat-value verified">Verified</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Quick Links</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="quick-links">
+                                    <a href="#" class="quick-link">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Security Settings</span>
+                                    </a>
+                                    <a href="#" class="quick-link">
+                                        <i class="fas fa-bell"></i>
+                                        <span>Notification Preferences</span>
+                                    </a>
+                                    <a href="#" class="quick-link">
+                                        <i class="fas fa-users"></i>
+                                        <span>Staff Management</span>
+                                    </a>
+                                    <a href="#" class="quick-link">
+                                        <i class="fas fa-chart-bar"></i>
+                                        <span>Performance Reports</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon"><img src="logo2.png" alt="logo" style="width: 30px; margin-top: 12px;"></div>
+                        <span class="logo-text">LifeLink Blood Bank Network</span>
+                    </div>
+                    <p>Saving lives through efficient blood management</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-phone-alt"></i> Emergency: 1-800-BLOOD-HELP</a>
+                    <a href="#"><i class="fas fa-envelope"></i> support@lifelink.org</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LifeLink - Intelligent Blood Donation & Emergency Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Blood Unit Modal -->
+    <div class="modal" id="bloodUnitModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Update Blood Units</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="blood-group-display" id="modalBloodGroup">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                <div class="unit-controls">
+                    <button class="unit-btn remove-btn" id="removeUnitBtn">
+                        <i class="fas fa-minus"></i> Remove Unit
+                    </button>
+                    <div class="unit-count">
+                        <span id="currentUnits">0</span>
+                        <span class="unit-label">Units</span>
+                    </div>
+                    <button class="unit-btn add-btn" id="addUnitBtn">
+                        <i class="fas fa-plus"></i> Add Unit
+                    </button>
+                </div>
+                <div class="unit-input">
+                    <label for="unitInput">Or enter specific amount:</label>
+                    <input type="number" id="unitInput" min="0" max="100" value="0">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelUpdateBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveUnitsBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script src="../authGuard.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("token");
+        const role = localStorage.getItem("role");
+
+        if (!token || role !== "bloodbank") {
+        window.location.href = "../auth/login.html";
+        }
+    });
+    </script>
+
+
+</body>
+</html>

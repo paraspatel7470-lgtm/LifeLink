@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLink - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="login.html" class="logo">
+                    <div class="logo-icon"><img src="../main-webstite/logo.png" alt="logo" style="width: 30px; margin-left: 15px;"></div>
+                    <span class="logo-text">LifeLink</span>
+                </a>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-outline active">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="auth-container">
+        <div class="auth-wrapper">
+            <!-- Left Side - Illustration -->
+            <div class="auth-illustration">
+                <div class="illustration-content">
+                    <div class="heart-pulse">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h2>Welcome Back to LifeLink</h2>
+                    <p>Access your account to continue saving lives through intelligent blood donation.</p>
+                    <div class="illustration-features">
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secure & Encrypted</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Real-time Alerts</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>Save Lives</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Login Form -->
+            <div class="auth-form">
+                <div class="form-header">
+                    <h1>Login to LifeLink</h1>
+                    <p>Enter your credentials to access your account</p>
+                </div>
+
+                <form id="loginForm" class="form">
+                    <!-- Role Selection -->
+                    <div class="form-group">
+                        <label class="form-label">Login as:</label>
+                        <div class="role-selection">
+                            <div class="role-option" data-role="donor">
+                                <div class="role-icon">
+                                    <i class="fas fa-user-injured"></i>
+                                </div>
+                                <span>Donor</span>
+                            </div>
+                            <div class="role-option" data-role="hospital">
+                                <div class="role-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <span>Hospital</span>
+                            </div>
+                            <div class="role-option" data-role="bloodbank">
+                                <div class="role-icon">
+                                    <i class="fas fa-prescription-bottle"></i>
+                                </div>
+                                <span>Blood Bank</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email/Phone Field -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email or Phone</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input 
+                                type="text" 
+                                id="email" 
+                                name="email"
+                                placeholder="Enter your email or phone number"
+                                required>
+                        </div>
+                        <div class="input-hint">Use the email or phone number you registered with</div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password"
+                                placeholder="Enter your password"
+                                required>
+                            <button type="button" class="password-toggle" id="passwordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox">
+                                <input type="checkbox" id="rememberMe">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div id="errorMessage" class="error-message" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Invalid credentials. Please try again.</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block btn-large">
+                        <span id="loginText">Login</span>
+                        <span id="loginLoader" class="loader" style="display: none;"></span>
+                    </button>
+
+                    <!-- Divider -->
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+
+                    <!-- Demo Login Buttons -->
+                    <div class="demo-logins">
+                        <p>Quick Demo Login:</p>
+                        <div class="demo-buttons">
+                            <button type="button" class="btn btn-outline btn-demo" data-role="donor">
+                                Login as Donor
+                            </button>
+                            <button type="button" class="btn btn-outline btn-demo" data-role="hospital">
+                                Login as Hospital
+                            </button>
+                            <button type="button" class="btn btn-outline btn-demo" data-role="bloodbank">
+                                Login as Blood Bank
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Signup Link -->
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="signup.html">Create an account</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 LifeLink — Intelligent Blood Donation & Emergency Network</p>
+            <p class="footer-links">
+                <a href="#">Privacy Policy</a> • 
+                <a href="#">Terms of Service</a> • 
+                <a href="#">Contact Support</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

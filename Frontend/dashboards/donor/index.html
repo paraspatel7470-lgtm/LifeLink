@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LifeLink - Donor Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Top Navigation -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <!-- Logo -->
+          <div class="nav-logo">
+            <a href="#" class="logo">
+              <div class="logo-icon">
+                <img
+                  src="../bloodBank/logo.png"
+                  alt="logo"
+                  style="width: 30px; margin-left: 15px"
+                />
+              </div>
+              <span class="logo-text">LifeLink Donor Dashboard</span>
+            </a>
+          </div>
+          <!-- Right side icons -->
+          <div class="nav-right">
+            <!-- Notifications -->
+            <div class="notification-dropdown">
+              <button class="nav-icon-btn" id="notificationBtn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+              </button>
+              <div class="dropdown-content notification-dropdown-content">
+                <div class="dropdown-header">
+                  <h4>Notifications</h4>
+                  <button class="mark-read">Mark all read</button>
+                </div>
+                <div class="notification-list">
+                  <div class="notification-item unread">
+                    <div class="notification-icon">
+                      <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="notification-content">
+                      <p>
+                        <strong>Emergency Request</strong> - City Hospital needs
+                        O+ blood
+                      </p>
+                      <span class="notification-time">10 min ago</span>
+                    </div>
+                  </div>
+                  <div class="notification-item">
+                    <div class="notification-icon">
+                      <i class="fas fa-award"></i>
+                    </div>
+                    <div class="notification-content">
+                      <p><strong>New Badge Earned</strong> - Hero Donor</p>
+                      <span class="notification-time">2 hours ago</span>
+                    </div>
+                  </div>
+                  <div class="notification-item">
+                    <div class="notification-icon">
+                      <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="notification-content">
+                      <p>
+                        <strong>Donation Reminder</strong> - You're eligible to
+                        donate again
+                      </p>
+                      <span class="notification-time">1 day ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- User Profile -->
+            <div class="profile-dropdown">
+              <button class="profile-btn" id="profileBtn">
+                <div class="avatar">AJ</div>
+                <span class="profile-name">Alex Johnson</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-content profile-dropdown-content">
+                <a href="#" class="dropdown-item" data-page="profile">
+                  <i class="fas fa-user"></i> My Profile
+                </a>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-cog"></i> Settings
+                </a>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-question-circle"></i> Help
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item logout" id="logoutBtn">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Dashboard Navigation Tabs -->
+      <div class="dashboard-tabs">
+        <div class="container">
+          <nav class="tabs-nav">
+            <button class="tab-btn active" data-page="dashboard">
+              <i class="fas fa-home"></i> Dashboard
+            </button>
+            <button class="tab-btn" data-page="sos">
+              <i class="fas fa-bell"></i> SOS Requests
+              <span class="badge" id="sosBadge">2</span>
+            </button>
+            <button class="tab-btn" data-page="history">
+              <i class="fas fa-history"></i> Donation History
+            </button>
+            <button class="tab-btn" data-page="profile">
+              <i class="fas fa-user"></i> My Profile
+            </button>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Dashboard Page (Default) -->
+        <div class="page active" id="dashboard-page">
+          <!-- Welcome Section -->
+          <div class="welcome-section">
+            <div class="welcome-content">
+              <h1>Welcome back, Alex!</h1>
+              <p>
+                Thank you for being part of our lifesaving network. Your
+                donations have helped save 5 lives.
+              </p>
+            </div>
+            <div class="welcome-stats">
+              <div class="stat-item">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Total Donations</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Lives Saved</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">45</div>
+                <div class="stat-label">Days Active</div>
+              </div>
+            </div>
+          </div>
+          <!-- Main Dashboard Grid -->
+          <div class="dashboard-grid">
+            <!-- Left Column -->
+            <div class="left-column">
+              <!-- Availability Toggle Card -->
+              <div class="card availability-card">
+                <div class="card-header">
+                  <h3><i class="fas fa-toggle-on"></i> Availability Status</h3>
+                </div>
+                <div class="card-body">
+                  <div class="availability-status">
+                    <div class="status-indicator" id="statusIndicator">
+                      <div class="status-dot available"></div>
+                      <div class="status-text">
+                        <h4>You are currently Available</h4>
+                        <p>
+                          SOS requests will be sent to you for emergencies in
+                          your area.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="availability-toggle">
+                      <button class="toggle-btn active" id="availableToggle">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Available</span>
+                      </button>
+                      <button class="toggle-btn" id="unavailableToggle">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Not Available</span>
+                      </button>
+                    </div>
+                    <div class="availability-info">
+                      <p>
+                        <i class="fas fa-info-circle"></i> When available,
+                        you'll receive SOS alerts for blood emergencies matching
+                        your blood type.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Mini Leaderboard Stats -->
+              <div class="card stats-card">
+                <div class="card-header">
+                  <h3><i class="fas fa-trophy"></i> Your Stats & Badges</h3>
+                </div>
+                <div class="card-body">
+                  <div class="stats-grid">
+                    <div class="stat-box">
+                      <div class="stat-icon"><i class="fas fa-star"></i></div>
+                      <div class="stat-details">
+                        <div class="stat-value">240</div>
+                        <div class="stat-label">Donor Points</div>
+                      </div>
+                    </div>
+                    <div class="stat-box">
+                      <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                      </div>
+                      <div class="stat-details">
+                        <div class="stat-value">#12</div>
+                        <div class="stat-label">City Rank</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="badges-section">
+                    <h4>Badges Earned</h4>
+                    <div class="badges-list">
+                      <div class="badge-item">
+                        <div class="badge-icon new-donor">
+                          <i class="fas fa-heart"></i>
+                        </div>
+                        <span class="badge-label">New Donor</span>
+                      </div>
+                      <div class="badge-item">
+                        <div class="badge-icon hero-donor">
+                          <i class="fas fa-medal"></i>
+                        </div>
+                        <span class="badge-label">Hero Donor</span>
+                      </div>
+                      <div class="badge-item">
+                        <div class="badge-icon super-donor">
+                          <i class="fas fa-crown"></i>
+                        </div>
+                        <span class="badge-label">Super Donor</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Right Column -->
+            <div class="right-column">
+              <!-- Active SOS Alerts -->
+              <div class="card sos-alerts-card">
+                <div class="card-header">
+                  <h3><i class="fas fa-bell"></i> Active SOS Alerts</h3>
+                  <a href="#" class="view-all" data-page="sos">View All</a>
+                </div>
+                <div class="card-body">
+                  <div class="sos-alerts-list">
+                    <!-- SOS Alert 1 -->
+                    <div class="sos-alert-item">
+                      <div class="sos-alert-header">
+                        <div class="hospital-info">
+                          <div class="hospital-icon">
+                            <i class="fas fa-hospital"></i>
+                          </div>
+                          <div>
+                            <h4>City General Hospital</h4>
+                            <p class="alert-time">15 min ago • 2.5 km away</p>
+                          </div>
+                        </div>
+                        <div class="urgency-level critical">
+                          <i class="fas fa-exclamation-triangle"></i> Critical
+                        </div>
+                      </div>
+                      <div class="sos-alert-details">
+                        <div class="detail-item">
+                          <span class="detail-label">Blood Group:</span>
+                          <span class="detail-value blood-group">O+</span>
+                        </div>
+                        <div class="detail-item">
+                          <span class="detail-label">Units Needed:</span>
+                          <span class="detail-value">2 units</span>
+                        </div>
+                        <div class="detail-item">
+                          <span class="detail-label">Time Window:</span>
+                          <span class="detail-value">Within 45 minutes</span>
+                        </div>
+                      </div>
+                      <div class="sos-alert-actions">
+                        <button
+                          class="btn btn-primary btn-sm accept-sos"
+                          data-alert="1"
+                        >
+                          <i class="fas fa-check"></i> Accept
+                        </button>
+                        <button
+                          class="btn btn-outline btn-sm reject-sos"
+                          data-alert="1"
+                        >
+                          <i class="fas fa-times"></i> Reject
+                        </button>
+                      </div>
+                    </div>
+                    <!-- SOS Alert 2 -->
+                    <div class="sos-alert-item">
+                      <div class="sos-alert-header">
+                        <div class="hospital-info">
+                          <div class="hospital-icon">
+                            <i class="fas fa-hospital"></i>
+                          </div>
+                          <div>
+                            <h4>Metro Medical Center</h4>
+                            <p class="alert-time">30 min ago • 4.1 km away</p>
+                          </div>
+                        </div>
+                        <div class="urgency-level high">
+                          <i class="fas fa-exclamation-circle"></i> High
+                        </div>
+                      </div>
+                      <div class="sos-alert-details">
+                        <div class="detail-item">
+                          <span class="detail-label">Blood Group:</span>
+                          <span class="detail-value blood-group">O+</span>
+                        </div>
+                        <div class="detail-item">
+                          <span class="detail-label">Units Needed:</span>
+                          <span class="detail-value">1 unit</span>
+                        </div>
+                        <div class="detail-item">
+                          <span class="detail-label">Time Window:</span>
+                          <span class="detail-value">Within 2 hours</span>
+                        </div>
+                      </div>
+                      <div class="sos-alert-actions">
+                        <button
+                          class="btn btn-primary btn-sm accept-sos"
+                          data-alert="2"
+                        >
+                          <i class="fas fa-check"></i> Accept
+                        </button>
+                        <button
+                          class="btn btn-outline btn-sm reject-sos"
+                          data-alert="2"
+                        >
+                          <i class="fas fa-times"></i> Reject
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="no-alerts"
+                    id="noAlertsMessage"
+                    style="display: none"
+                  >
+                    <div class="no-alerts-icon">
+                      <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <p>No active SOS alerts at the moment.</p>
+                    <p class="text-muted">
+                      You will be notified when emergencies matching your blood
+                      type occur.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- Quick Actions -->
+              <div class="card quick-actions-card">
+                <div class="card-header">
+                  <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                </div>
+                <div class="card-body">
+                  <div class="quick-actions">
+                    <button class="quick-action-btn">
+                      <div class="action-icon">
+                        <i class="fas fa-calendar-check"></i>
+                      </div>
+                      <span>Schedule Donation</span>
+                    </button>
+                    <button class="quick-action-btn">
+                      <div class="action-icon">
+                        <i class="fas fa-file-medical"></i>
+                      </div>
+                      <span>Health Checkup</span>
+                    </button>
+                    <button class="quick-action-btn">
+                      <div class="action-icon">
+                        <i class="fas fa-share-alt"></i>
+                      </div>
+                      <span>Invite Friends</span>
+                    </button>
+                    <button class="quick-action-btn">
+                      <div class="action-icon">
+                        <i class="fas fa-question-circle"></i>
+                      </div>
+                      <span>Get Help</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SOS Requests Page -->
+        <div class="page" id="sos-page">
+          <div class="page-header">
+            <h2><i class="fas fa-bell"></i> SOS Requests</h2>
+            <p>
+              Emergency blood requests in your area. Accept requests to help
+              save lives.
+            </p>
+          </div>
+          <!-- SOS Filters -->
+          <div class="filters-section">
+            <div class="filter-group">
+              <label for="urgencyFilter">Urgency:</label>
+              <select id="urgencyFilter" class="filter-select">
+                <option value="all">All</option>
+                <option value="critical">Critical</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="distanceFilter">Distance:</label>
+              <select id="distanceFilter" class="filter-select">
+                <option value="all">Any Distance</option>
+                <option value="5">Within 5 km</option>
+                <option value="10">Within 10 km</option>
+                <option value="20">Within 20 km</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <button class="btn btn-outline" id="refreshSOS">
+                <i class="fas fa-sync-alt"></i> Refresh
+              </button>
+            </div>
+          </div>
+          <!-- SOS Requests List -->
+          <div class="sos-requests-list">
+            <!-- Will be populated by JavaScript -->
+          </div>
+          <!-- No SOS Requests Message -->
+          <div class="empty-state" id="noSOSRequests">
+            <div class="empty-state-icon">
+              <i class="fas fa-bell-slash"></i>
+            </div>
+            <h3>No SOS Requests Available</h3>
+            <p>
+              When you're marked as available and there are emergencies in your
+              area, they will appear here.
+            </p>
+            <button class="btn btn-primary" id="checkAvailabilityBtn">
+              Check Availability Status
+            </button>
+          </div>
+        </div>
+        <!-- Donation History Page -->
+        <div class="page" id="history-page">
+          <div class="page-header">
+            <h2><i class="fas fa-history"></i> Donation History</h2>
+            <p>Track your blood donation journey and impact.</p>
+          </div>
+          <!-- History Summary -->
+          <div class="history-summary">
+            <div class="summary-card">
+              <div class="summary-icon"><i class="fas fa-tint"></i></div>
+              <div class="summary-content">
+                <h3>8 Units Donated</h3>
+                <p>Total blood donated</p>
+              </div>
+            </div>
+            <div class="summary-card">
+              <div class="summary-icon"><i class="fas fa-heartbeat"></i></div>
+              <div class="summary-content">
+                <h3>5 Lives Saved</h3>
+                <p>Estimated impact</p>
+              </div>
+            </div>
+            <div class="summary-card">
+              <div class="summary-icon"><i class="fas fa-calendar"></i></div>
+              <div class="summary-content">
+                <h3>Next: Jan 15, 2024</h3>
+                <p>Eligible for next donation</p>
+              </div>
+            </div>
+          </div>
+          <!-- Donation History Table -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Recent Donations</h3>
+              <div class="table-actions">
+                <button class="btn btn-outline btn-sm">
+                  <i class="fas fa-download"></i> Export
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="table-container">
+                <table class="history-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Hospital / Center</th>
+                      <th>Units Donated</th>
+                      <th>Status</th>
+                      <th>Next Eligible Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="historyTableBody">
+                    <!-- Will be populated by JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+              <!-- No History Message -->
+              <div class="empty-state" id="noHistory" style="display: none">
+                <div class="empty-state-icon">
+                  <i class="fas fa-history"></i>
+                </div>
+                <h3>No Donation History Yet</h3>
+                <p>
+                  Your donation history will appear here after you make your
+                  first donation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Profile Page -->
+        <div class="page" id="profile-page">
+          <div class="page-header">
+            <h2><i class="fas fa-user"></i> My Profile</h2>
+            <p>Manage your donor profile and personal information</p>
+          </div>
+          <div class="profile-container">
+            <div class="card profile-card">
+              <div class="card-header"><h3>Personal Information</h3></div>
+              <div class="card-body">
+                <form id="profileForm">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="profileName">Full Name</label>
+                      <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input
+                          type="text"
+                          id="profileName"
+                          value="Alex Johnson"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="profileBloodGroup">Blood Group</label>
+                      <div class="input-with-icon">
+                        <i class="fas fa-tint"></i>
+                        <select id="profileBloodGroup" required>
+                          <option value="O+">O+</option>
+                          <option value="O-">O-</option>
+                          <option value="A+">A+</option>
+                          <option value="A-">A-</option>
+                          <option value="B+">B+</option>
+                          <option value="B-">B-</option>
+                          <option value="AB+">AB+</option>
+                          <option value="AB-">AB-</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="profileEmail">Email Address</label>
+                      <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input
+                          type="email"
+                          id="profileEmail"
+                          value="alex.johnson@example.com"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="profilePhone">Phone Number</label>
+                      <div class="input-with-icon">
+                        <i class="fas fa-phone"></i>
+                        <input
+                          type="tel"
+                          id="profilePhone"
+                          value="+91 9256384527"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="profileAddress">Address</label>
+                    <div class="input-with-icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <input
+                        type="text"
+                        id="profileAddress"
+                        value="MP Nagar, Bhopal, Madhya Pradesh – 462011, India"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="profileBio">Bio / Medical Notes</label>
+                    <div class="input-with-icon">
+                      <i class="fas fa-file-medical"></i>
+                      <textarea id="profileBio" rows="3">
+ Regular blood donor since 2026. No medical restrictions.</textarea
+                      >
+                    </div>
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-save"></i> Save Changes
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline"
+                      id="cancelChanges"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- Profile Stats -->
+            <div class="profile-sidebar">
+              <div class="card">
+                <div class="card-header"><h3>Profile Summary</h3></div>
+                <div class="card-body">
+                  <div class="profile-avatar">
+                    <div class="avatar-large"></div>
+                    <div class="avatar-info">
+                      <h4>donor 1</h4>
+                      <p class="text-muted">Blood Donor</p>
+                    </div>
+                  </div>
+                  <div class="profile-stats">
+                    <div class="profile-stat">
+                      <div class="stat-label">Member Since</div>
+                      <div class="stat-value2">January 2026</div>
+                    </div>
+                    <div class="profile-stat">
+                      <div class="stat-label">Last Donation</div>
+                      <div class="stat-value2">Nov 15, 2023</div>
+                    </div>
+                    <div class="profile-stat">
+                      <div class="stat-label">Total Donations</div>
+                      <div class="stat-value2">8</div>
+                    </div>
+                    <div class="profile-stat">
+                      <div class="stat-label">Donor Points</div>
+                      <div class="stat-value2">240</div>
+                    </div>
+                  </div>
+                  <div class="profile-actions">
+                    <button class="btn btn-outline btn-block">
+                      <i class="fas fa-qrcode"></i> Donor ID Card
+                    </button>
+                    <button class="btn btn-outline btn-block">
+                      <i class="fas fa-shield-alt"></i> Privacy Settings
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo">
+              <div class="logo-icon">
+                <img
+                  src="../bloodBank/logo2.png"
+                  alt="logo"
+                  style="width: 30px; margin-top: 12px"
+                />
+              </div>
+              <span class="logo-text">LifeLink</span>
+            </div>
+            <p>Intelligent Blood Donation & Emergency Network</p>
+          </div>
+          <div class="footer-links">
+            <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+            <a href="#"><i class="fas fa-file-alt"></i> Terms</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+            <a href="#"><i class="fas fa-phone"></i> Contact</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2023 LifeLink. All rights reserved. | Donor Dashboard v2.1
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- JavaScript -->
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="script.js"></script>
+    <script src="../authGuard.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("token");
+        const role = localStorage.getItem("role");
+        if (!token || role !== "donor") {
+          window.location.href = "../auth/login.html";
+        }
+      });
+    </script>
+  </body>
+</html>

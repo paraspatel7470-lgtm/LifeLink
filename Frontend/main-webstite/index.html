@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLink — Intelligent Blood Donation & Emergency Network</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="#">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><img src="logo.png" alt="logo" style="width: 30px; margin-left: 15px;"></div>
+                    <span class="logo-text">LifeLink</span>
+                </a>
+                
+                <div class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                        <li class="nav-item"><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                        <li class="nav-item"><a href="#leaderboard" class="nav-link">Leaderboard</a></li>
+                        <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+                        <li class="nav-item"><a href="#roles" class="nav-link">For</a></li>
+                        <li class="nav-item"><a href="#impact" class="nav-link">Impact</a></li>
+                        <li class="nav-item"><a href="#footer" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-buttons">
+                   <a href="../auth/login.html" class="btn btn-outline" id="loginBtn">Login</a>
+                   <a href="../auth/signup.html" class="btn btn-primary" id="signupBtn">Sign Up</a>
+                </div>
+                
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Saving Lives Through Intelligent Blood Donation</h1>
+                <p class="hero-subtitle">A smart emergency network connecting donors, hospitals, and blood banks instantly.</p>
+                <div class="hero-buttons">
+                    <a href="../auth/signup.html?role=donor" class="btn btn-outline" id="loginBtn">Become a Donor</a>
+                    <a href="../auth/signup.html?role=hospital" class="btn btn-primary" id="signupBtn">Request Emergency Help</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10,000+</span>
+                        <span class="stat-text">Active Donors</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-text">Hospitals Connected</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50,000+</span>
+                        <span class="stat-text">Lives Impacted</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <div class="floating-element heart"><i class="fas fa-heartbeat"></i></div>
+                    <div class="floating-element drop"><i class="fas fa-tint"></i></div>
+                    <div class="floating-element hospital"><i class="fas fa-hospital"></i></div>
+                    <div class="floating-element donor"><i class="fas fa-user-md"></i></div>
+                    <div class="hero-illustration">
+                        <div class="illustration-circle">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Three simple steps to save lives</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="step-title">Hospital Sends SOS</h3>
+                    <p class="step-description">Hospital sends an emergency request through our system when blood is urgently needed.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h3 class="step-title">Instant Notifications</h3>
+                    <p class="step-description">LifeLink notifies nearby compatible donors and blood banks in real-time.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="step-title">Donor Responds</h3>
+                    <p class="step-description">Donor accepts the request and lifesaving blood reaches the hospital quickly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="section leaderboard-section" id="leaderboard">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Top Donor Leaderboard</h2>
+                <p class="section-subtitle">Our heroes saving lives every day</p>
+            </div>
+            
+            <div class="leaderboard-container">
+                <div class="leaderboard-header">
+                    <div class="rank-header">Rank</div>
+                    <div class="name-header">Donor</div>
+                    <div class="points-header">Points</div>
+                    <div class="blood-header">Blood Group</div>
+                </div>
+                
+                <div class="leaderboard">
+                    <!-- Top Donor (Rank 1) -->
+                    <!-- <div class="leaderboard-item first">
+                        <div class="rank">#1</div>
+                        <div class="donor-info">
+                            <div class="donor-avatar">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="donor-details">
+                                <h4 class="donor-name">Shabir Hussain Khan</h4>
+                                <div class="badges">
+                                    <span class="badge gold"><i class="fas fa-medal"></i> Lifesaver</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="points">4,820</div>
+                        <div class="blood-group">
+                            <span class="blood-type o-negative">O-</span>
+                        </div>
+                    </div> -->
+                    
+                     <!-- Rank 2 -->
+                    <!-- <div class="leaderboard-item second">
+                        <div class="rank">#2</div>
+                        <div class="donor-info">
+                            <div class="donor-avatar">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="donor-details">
+                                <h4 class="donor-name">Rajan Raikhy</h4>
+                                <div class="badges">
+                                    <span class="badge silver"><i class="fas fa-medal"></i> Hero</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="points">3,950</div>
+                        <div class="blood-group">
+                            <span class="blood-type a-positive">A+</span>
+                        </div>
+                    </div> -->
+                    
+                    <!-- Rank 3 -->
+                    <!-- <div class="leaderboard-item third">
+                        <div class="rank">#3</div>
+                        <div class="donor-info">
+                            <div class="donor-avatar">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="donor-details">
+                                <h4 class="donor-name">Vishwesh Sadashiv Lele</h4>
+                                <div class="badges">
+                                    <span class="badge bronze"><i class="fas fa-medal"></i> Champion</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="points">3,120</div>
+                        <div class="blood-group">
+                            <span class="blood-type b-positive">B+</span>
+                        </div>
+                    </div> -->
+                    
+                    <!-- Rank 4 -->
+                    <!-- <div class="leaderboard-item">
+                        <div class="rank">#4</div>
+                        <div class="donor-info">
+                            <div class="donor-avatar">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="donor-details">
+                                <h4 class="donor-name">Suresh Kumar Saini</h4>
+                                <div class="badges">
+                                    <span class="badge regular"><i class="fas fa-award"></i> Guardian</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="points">2,870</div>
+                        <div class="blood-group">
+                            <span class="blood-type ab-negative">AB-</span>
+                        </div>
+                    </div> -->
+                    
+                    <!-- Rank 5 -->
+                    <!-- <div class="leaderboard-item">
+                        <div class="rank">#5</div>
+                        <div class="donor-info">
+                            <div class="donor-avatar">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="donor-details">
+                                <h4 class="donor-name">Shiv Nadar</h4>
+                                <div class="badges">
+                                    <span class="badge regular"><i class="fas fa-award"></i> Protector</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="points">2,540</div>
+                        <div class="blood-group">
+                            <span class="blood-type o-positive">O+</span>
+                        </div>
+                    </div>  -->
+                </div>
+                
+                <div class="leaderboard-footer">
+                    <p>Join our community and become a lifesaver today!</p>
+                    <a href="../auth/login.html"><button class="btn btn-primary">Join Leaderboard</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose LifeLink?</h2>
+                <p class="section-subtitle">Innovative features for maximum impact</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Real-time SOS Alerts</h3>
+                    <p class="feature-description">Instant notifications to nearby donors when emergencies arise.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-people-arrows"></i>
+                    </div>
+                    <h3 class="feature-title">Smart Donor Matching</h3>
+                    <p class="feature-description">Intelligent algorithm matches blood type, location, and availability.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3 class="feature-title">Dual Notification System</h3>
+                    <p class="feature-description">Simultaneously alerts both donors and blood banks for faster response.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="feature-title">Donor Leaderboard</h3>
+                    <p class="feature-description">Engaging, gamified rankings that motivate donors through points,
+                badges, and rewards for saving lives.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Safety & Cooldown</h3>
+                    <p class="feature-description">Health monitoring and mandatory cooldown periods between donations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">AI-Driven Demand Forecasting</h3>
+                    <p class="feature-description">AI predicts upcoming blood demand using real-time data and
+                trends, helping hospitals stay prepared and avoid shortages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Role Cards Section -->
+    <section class="section roles" id="roles">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">For Everyone in the Network</h2>
+                <p class="section-subtitle">How different users benefit from LifeLink</p>
+            </div>
+            
+            <div class="roles-container">
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <h3 class="role-title">Donors</h3>
+                    <ul class="role-benefits">
+                        <li><i class="fas fa-check-circle"></i> Get notified instantly about emergencies</li>
+                        <li><i class="fas fa-check-circle"></i> Save lives in your community</li>
+                        <li><i class="fas fa-check-circle"></i> Earn badges and recognition</li>
+                        <li><i class="fas fa-check-circle"></i> Track your donation history</li>
+                        <li><i class="fas fa-check-circle"></i> Health monitoring and reminders</li>
+                    </ul>
+                    <button class="btn btn-outline"  onclick="window.location.href='../auth/signup.html?role=donor'">Become a Donor</button>
+                </div>
+                
+                <div class="role-card highlighted">
+                    <div class="role-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3 class="role-title">Hospitals</h3>
+                    <ul class="role-benefits">
+                        <li><i class="fas fa-check-circle"></i> Emergency SOS system</li>
+                        <li><i class="fas fa-check-circle"></i> Fast donor matching</li>
+                        <li><i class="fas fa-check-circle"></i> Real-time tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Automated blood bank coordination</li>
+                        <li><i class="fas fa-check-circle"></i> Comprehensive dashboard</li>
+                    </ul>
+                    <button class="btn btn-primary"  onclick="window.location.href='../auth/signup.html?role=hospital'">Register Hospital</button>
+                </div>
+                
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-prescription-bottle"></i>
+                    </div>
+                    <h3 class="role-title">Blood Banks</h3>
+                    <ul class="role-benefits">
+                        <li><i class="fas fa-check-circle"></i> Manage blood stock efficiently</li>
+                        <li><i class="fas fa-check-circle"></i> Respond to hospital requests</li>
+                        <li><i class="fas fa-check-circle"></i> Coordinate with multiple hospitals</li>
+                        <li><i class="fas fa-check-circle"></i> Inventory tracking and alerts</li>
+                        <li><i class="fas fa-check-circle"></i> Donor management system</li>
+                    </ul>
+                    <button class="btn btn-outline"  onclick="window.location.href='../auth/signup.html?role=bloodbank'">Join Network</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Numbers Section -->
+    <section class="section impact" id="impact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Impact in Numbers</h2>
+                <p class="section-subtitle">Making a difference across communities</p>
+            </div>
+            
+            <div class="impact-container">
+                <div class="impact-item">
+                    <div class="impact-number" data-count="25400">0</div>
+                    <div class="impact-text">Donors Registered</div>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-number" data-count="780">0</div>
+                    <div class="impact-text">Hospitals Connected</div>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-number" data-count="125000">0</div>
+                    <div class="impact-text">Lives Helped</div>
+                </div>
+                
+                <div class="impact-item">
+                    <div class="impact-number" data-count="96">0</div>
+                    <div class="impact-text">Cities Covered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="#" class="logo footer-logo">
+                        <div class="logo-icon"><img src="logo2.png" alt="logo" style="width: 30px; margin-top: 12px;"></div>
+                        <span class="logo-text">LifeLink</span>
+                    </a>
+                    <p class="footer-mission">Connecting blood donors with emergencies in real-time to save lives through intelligent technology.</p>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> contact@lifelink.network</p>
+                        <p><i class="fas fa-phone"></i> +91 9302887302-HELP</p>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#leaderboard">Leaderboard</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#roles">For</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Donor Safety</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="newsletter">
+                        <p>Subscribe to our newsletter</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email">
+                            <button class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LifeLink — Intelligent Blood Donation & Emergency Network. All rights reserved.</p>
+                <p class="footer-tagline">Every drop counts. Every second matters.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

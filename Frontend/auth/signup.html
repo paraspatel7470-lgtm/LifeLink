@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLink - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="login.html" class="logo">
+                    <div class="logo-icon"><img src="../main-webstite/logo.png" alt="logo" style="width: 30px; margin-left: 15px;"></div>
+                    <span class="logo-text">LifeLink</span>
+                </a>
+                <div class="nav-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary active">Sign Up</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="auth-container">
+        <div class="auth-wrapper">
+            <!-- Left Side - Form -->
+            <div class="auth-form signup-form">
+                <div class="form-header">
+                    <h1>Join LifeLink Network</h1>
+                    <p>Select your role and create an account to start saving lives</p>
+                </div>
+
+                <form id="signupForm" class="form">
+                    <!-- Step 1: Role Selection -->
+                    <div class="form-step active" id="step1">
+                        <h2 class="step-title">Choose Your Role</h2>
+                        <p class="step-description">Select how you want to participate in the LifeLink network</p>
+                        
+                        <div class="role-cards">
+                            <div class="role-card" data-role="donor">
+                                <div class="role-card-header">
+                                    <div class="role-icon">
+                                        <i class="fas fa-user-injured"></i>
+                                    </div>
+                                    <h3>Donor</h3>
+                                </div>
+                                <div class="role-card-body">
+                                    <ul class="role-features">
+                                        <li><i class="fas fa-check"></i> Save lives in emergencies</li>
+                                        <li><i class="fas fa-check"></i> Get notified instantly</li>
+                                        <li><i class="fas fa-check"></i> Earn badges & recognition</li>
+                                        <li><i class="fas fa-check"></i> Track donation history</li>
+                                    </ul>
+                                </div>
+                                <div class="role-card-footer">
+                                    <span class="select-text">Select Donor</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+
+                            <div class="role-card" data-role="hospital">
+                                <div class="role-card-header">
+                                    <div class="role-icon">
+                                        <i class="fas fa-hospital"></i>
+                                    </div>
+                                    <h3>Hospital</h3>
+                                </div>
+                                <div class="role-card-body">
+                                    <ul class="role-features">
+                                        <li><i class="fas fa-check"></i> Send emergency SOS</li>
+                                        <li><i class="fas fa-check"></i> Fast donor matching</li>
+                                        <li><i class="fas fa-check"></i> Real-time tracking</li>
+                                        <li><i class="fas fa-check"></i> Blood bank coordination</li>
+                                    </ul>
+                                </div>
+                                <div class="role-card-footer">
+                                    <span class="select-text">Select Hospital</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+
+                            <div class="role-card" data-role="bloodbank">
+                                <div class="role-card-header">
+                                    <div class="role-icon">
+                                        <i class="fas fa-prescription-bottle"></i>
+                                    </div>
+                                    <h3>Blood Bank</h3>
+                                </div>
+                                <div class="role-card-body">
+                                    <ul class="role-features">
+                                        <li><i class="fas fa-check"></i> Manage blood stock</li>
+                                        <li><i class="fas fa-check"></i> Respond to emergencies</li>
+                                        <li><i class="fas fa-check"></i> Coordinate with hospitals</li>
+                                        <li><i class="fas fa-check"></i> Inventory tracking</li>
+                                    </ul>
+                                </div>
+                                <div class="role-card-footer">
+                                    <span class="select-text">Select Blood Bank</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-navigation">
+                            <div class="step-indicator">
+                                <span class="step active">1</span>
+                                <span class="step">2</span>
+                            </div>
+                            <div class="step-hint">Select a role to continue</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Registration Form -->
+                    <div class="form-step" id="step2">
+                        <div class="step-header">
+                            <button type="button" class="back-btn" id="backToRoles">
+                                <i class="fas fa-arrow-left"></i>
+                                Change Role
+                            </button>
+                            <h2 class="step-title">Create Your Account</h2>
+                            <div class="selected-role-badge" id="selectedRoleBadge">
+                                <i class="fas fa-user-injured"></i>
+                                <span>Donor</span>
+                            </div>
+                        </div>
+
+                        <!-- Donor Fields -->
+                    <div id="loginFormSection">
+                        <div class="role-fields" id="donorFields">
+                            <div class="form-group">
+                                <label for="donorName" class="form-label">Full Name</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input 
+                                        type="text" 
+                                        id="donorName" 
+                                        name="donorName"
+                                        placeholder="Enter your full name"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="donorEmail" class="form-label">Email Address</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input 
+                                            type="email" 
+                                            id="donorEmail" 
+                                            name="donorEmail"
+                                            placeholder="Enter your email"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="donorPhone" class="form-label">Phone Number</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-phone"></i>
+                                        <input 
+                                            type="tel" 
+                                            id="donorPhone" 
+                                            name="donorPhone"
+                                            placeholder="Enter your phone number"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bloodGroup" class="form-label">Blood Group</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-tint"></i>
+                                    <select id="bloodGroup" name="bloodGroup" required>
+                                        <option value="">Select Blood Group</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="donorPassword" class="form-label">Password</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input 
+                                            type="password" 
+                                            id="donorPassword" 
+                                            name="donorPassword"
+                                            placeholder="Create a password"
+                                            required>
+                                    </div>
+                                    <div class="password-strength" id="donorPasswordStrength"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="donorConfirmPassword" class="form-label">Confirm Password</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input 
+                                            type="password" 
+                                            id="donorConfirmPassword" 
+                                            name="donorConfirmPassword"
+                                            placeholder="Confirm your password"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!-- Hospital Fields -->
+                        <div class="role-fields" id="hospitalFields" style="display: none;">
+                            <div class="form-group">
+                                <label for="hospitalName" class="form-label">Hospital Name</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-hospital"></i>
+                                    <input 
+                                        type="text" 
+                                        id="hospitalName" 
+                                        name="hospitalName"
+                                        placeholder="Enter hospital name"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="hospitalEmail" class="form-label">Contact Email</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input 
+                                            type="email" 
+                                            id="hospitalEmail" 
+                                            name="hospitalEmail"
+                                            placeholder="Enter hospital email"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hospitalPhone" class="form-label">Phone Number</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-phone"></i>
+                                        <input 
+                                            type="tel" 
+                                            id="hospitalPhone" 
+                                            name="hospitalPhone"
+                                            placeholder="Enter hospital phone"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="hospitalAddress" class="form-label">Hospital Address</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <input 
+                                        type="text" 
+                                        id="hospitalAddress" 
+                                        name="hospitalAddress"
+                                        placeholder="Enter complete address"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="hospitalPassword" class="form-label">Password</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input 
+                                        type="password" 
+                                        id="hospitalPassword" 
+                                        name="hospitalPassword"
+                                        placeholder="Create a password"
+                                        required>
+                                </div>
+                                <div class="password-strength" id="hospitalPasswordStrength"></div>
+                            </div>
+                        </div>
+
+                        <!-- Blood Bank Fields -->
+                        <div class="role-fields" id="bloodbankFields" style="display: none;">
+                            <div class="form-group">
+                                <label for="bloodbankName" class="form-label">Blood Bank Name</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-prescription-bottle"></i>
+                                    <input 
+                                        type="text" 
+                                        id="bloodbankName" 
+                                        name="bloodbankName"
+                                        placeholder="Enter blood bank name"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="bloodbankEmail" class="form-label">Email Address</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input 
+                                            type="email" 
+                                            id="bloodbankEmail" 
+                                            name="bloodbankEmail"
+                                            placeholder="Enter email address"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bloodbankPhone" class="form-label">Phone Number</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-phone"></i>
+                                        <input 
+                                            type="tel" 
+                                            id="bloodbankPhone" 
+                                            name="bloodbankPhone"
+                                            placeholder="Enter phone number"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="licenseNumber" class="form-label">License Number</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-id-card"></i>
+                                    <input 
+                                        type="text" 
+                                        id="licenseNumber" 
+                                        name="licenseNumber"
+                                        placeholder="Enter license number"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bloodbankPassword" class="form-label">Password</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input 
+                                        type="password" 
+                                        id="bloodbankPassword" 
+                                        name="bloodbankPassword"
+                                        placeholder="Create a password"
+                                        required>
+                                </div>
+                                <div class="password-strength" id="bloodbankPasswordStrength"></div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-group">
+                            <label class="checkbox">
+                                <input type="checkbox" id="terms" required>
+                                <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                            </label>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div id="signupErrorMessage" class="error-message" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Please fill in all required fields correctly.</span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-block btn-large">
+                            <span id="signupText">Create Account</span>
+                            <span id="signupLoader" class="loader" style="display: none;"></span>
+                        </button>
+
+                        <div class="step-navigation">
+                            <div class="step-indicator">
+                                <span class="step">1</span>
+                                <span class="step active">2</span>
+                            </div>
+                            <div class="step-hint">Complete your registration</div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Login Link -->
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </div>
+
+            <!-- Right Side - Illustration -->
+            <div class="auth-illustration signup-illustration">
+                <div class="illustration-content">
+                    <div class="illustration-animation">
+                        <div class="floating-drop">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="floating-heart">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="floating-hands">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                    </div>
+                    <h2>Join Our Lifesaving Network</h2>
+                    <p>Every registration brings us closer to saving more lives. Choose your role and make a difference today.</p>
+                    
+                    <div class="signup-stats">
+                        <div class="stat">
+                            <h3>25,000+</h3>
+                            <p>Active Donors</p>
+                        </div>
+                        <div class="stat">
+                            <h3>780+</h3>
+                            <p>Hospitals</p>
+                        </div>
+                        <div class="stat">
+                            <h3>500+</h3>
+                            <p>Blood Banks</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <i class="fas fa-quote-left"></i>
+                            <p>LifeLink helped us respond to 3 emergency cases in under 15 minutes. This system is revolutionary for healthcare.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Dr. Suresh Kumar Saini</strong>
+                            <span>Medical Director, City General Hospital</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 LifeLink — Intelligent Blood Donation & Emergency Network</p>
+            <p class="footer-links">
+                <a href="#">Privacy Policy</a> • 
+                <a href="#">Terms of Service</a> • 
+                <a href="#">Contact Support</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
